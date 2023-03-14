@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body,
+html {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-y: hidden;
+}
+::placeholder {
+  font-size: 1.1rem;
+}
+
+#greeting{
+  font-size: 2rem;
+}
+
+.login {
+    text-align: center;
+    text-decoration: none;
+    padding: 0.35em 1.2em;
+    margin-left: 10px;
+    background-color: white;
+    border: none;
+  }
+  #quote-container {
+    position: absolute;
+  bottom: 25px;
+  font-style: italic;
+  font-size: 10px;
+  text-align: center;
+  font-size: 1.3rem;
+  }
+  
+  /* style for quote text */
+  #quote-text {
+    margin-bottom: 1rem;
+  }
+  
+  /* style for quote author */
+  #quote-author {
+    font-style: italic;
+  }
+  #weather {
+    font-style: italic;
+    font-size: 12px;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 0.9em;
+  }
+
+  ::placeholder {
+    color: white;
+    opacity: 0.8;
+  }
+  .hidden {
+    display: none;
+  }
+  .logininput {
+    color: white;
+}
+
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+/* Todo panel styles */
+.todo-panel {
+  position: fixed;
+  bottom: 150px;
+  right: 50px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(120%);
+  border-radius: 5%;
+}
+
+.todo-panel.open {
+  transform: translateX(0);
+}
+
+.close-button {
+  position: absolute;
+  top: -3px;
+  right: 10px;
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 1.5rem;
+  text-align: center;
+  
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0 10px;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #eee;
+}
+
+.todo-item.strikethrough {
+  text-decoration: line-through;
+}
+
+.todo-checkbox {
+  margin-right: 10px;
+}
+
+.todo-label {
+  flex-grow: 1;
+  margin-right: 10px;
+  color: black;
+}
+
+.delete-button {
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+  color: red;
+  cursor: pointer;
+  
+}
+
+/* Add todo form styles */
+.add-todo-form {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #eee;
+}
+
+.add-todo-input {
+  flex-grow: 1;
+  margin-right: 10px;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.add-todo-button {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #0080ff;
+  color: #fff;
+  cursor: pointer;
+}
+.edit-button {
+  margin-right: 1rem;
+  
+  display: flex;
+  justify-content: center;
+  
+  color: black;
+  cursor: pointer;
+}
+    
