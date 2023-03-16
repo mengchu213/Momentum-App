@@ -1,4 +1,3 @@
-
 // array of image file names
 const images = ["0.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg"];
       
@@ -13,8 +12,5 @@ function setRandomBackground() {
     "')";
 }
 
-// set the initial background
 setRandomBackground();
-
-// change the background every minute
 setInterval(setRandomBackground, 60000);

@@ -1,3 +1,4 @@
+// Define an asynchronous function to fetch a random quote from an API
 async function fetchQuote() {
   const response = await fetch('https://api.quotable.io/random');
   const data = await response.json();
@@ -18,8 +19,5 @@ function displayQuote() {
     });
 }
 
-// display the initial quote
 displayQuote();
-
-// change the quote every minute
 setInterval(displayQuote, 60000);

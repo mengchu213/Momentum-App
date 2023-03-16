@@ -1,5 +1,7 @@
+// Set a variable with the value of a weather API key
 const API_KEY = "bca923c46f8daa20814a16befa473c41";
 
+// Define a function to handle the success case of getting the user's location
 function onGeoOk(position) {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
@@ -14,6 +16,7 @@ function onGeoOk(position) {
     });
 }
 
+// Define a function to handle the error case of getting the user's location
 function onGeoError() {
   alert("Location cannot be found. Cannot display weather.");
 }

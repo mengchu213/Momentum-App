@@ -3,12 +3,12 @@ const timezoneSelect = document.querySelector("#timezone-select");
 const greeting = document.querySelector("#greeting");
 const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#username-input");
-
 const updateButton = document.querySelector("#update-btn");
-
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
+
+// Define a function to update the clock display
 function getClock() {
   const date = new Date();
   const timezone = timezoneSelect.value;
@@ -47,9 +47,10 @@ timezoneSelect.addEventListener("change", () => {
 });
 
 
-
+// Define a function to handle the submit event of the login form
 function onLoginSubmit(event) {
-  event.preventDefault();
+  console.log("onLoginSubmit called");
+  event.preventDefault(); // Prevent the default behavior of the submit button
   loginForm.classList.add(HIDDEN_CLASSNAME);
   const username = loginInput.value;
   localStorage.setItem(USERNAME_KEY, username);
@@ -57,6 +58,8 @@ function onLoginSubmit(event) {
   updateButton.classList.remove(HIDDEN_CLASSNAME);
 }
 
+
+// Define a function to update the greeting text based on the current time and the provided username and timezone
 function printGreetings(username, timezone) {
     const now = new Date();
     const hours = now.toLocaleString("en-US", { timeZone: timezone, hour: "numeric", hour12: false }).split(":")[0];
@@ -72,6 +75,7 @@ function printGreetings(username, timezone) {
     greeting.classList.remove(HIDDEN_CLASSNAME);
   }
 
+// Define a function to handle the click event of the update button
 function onUpdateName() {
   localStorage.removeItem(USERNAME_KEY);
   loginForm.classList.remove(HIDDEN_CLASSNAME);
@@ -83,6 +87,7 @@ function onUpdateName() {
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);
 
+// Check if the saved username exists in the local storage
 if (savedUsername === null) {
   loginForm.classList.remove(HIDDEN_CLASSNAME);
   loginForm.addEventListener("submit", onLoginSubmit);
@@ -93,3 +98,4 @@ if (savedUsername === null) {
 }
 
 updateButton.addEventListener("click", onUpdateName);
+loginForm.addEventListener("submit", onLoginSubmit);

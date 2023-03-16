@@ -1,4 +1,3 @@
-// Get the DOM elements
 const openButton = document.querySelector('.open-button');
 const closeButton = document.querySelector('.close-button');
 const todoPanel = document.querySelector('.todo-panel');
@@ -6,8 +5,13 @@ const todoList = document.querySelector('.todo-list');
 const addTodoForm = document.querySelector('.add-todo-form');
 const addTodoInput = document.querySelector('.add-todo-input');
 
-// Todo items array
 let todos = [];
+
+// Load the todos from local storage, if available
+const savedTodos = localStorage.getItem('todos');
+if (savedTodos !== null) {
+  todos = JSON.parse(savedTodos);
+}
 
 // Event listener for opening the todo panel
 openButton.addEventListener('click', () => {
@@ -40,30 +44,36 @@ function renderTodos() {
       todoLabel.classList.add('strikethrough');
     }
 
-    const deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-button');
-    deleteButton.textContent = 'X';
-
     const editButton = document.createElement('button');
     editButton.classList.add('edit-button');
     editButton.textContent = 'Edit';
 
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-button');
+    deleteButton.textContent = 'X';
+
     todoItem.appendChild(todoCheckbox);
     todoItem.appendChild(todoLabel);
-    todoItem.appendChild(deleteButton);
     todoItem.appendChild(editButton);
+    todoItem.appendChild(deleteButton);
     todoList.appendChild(todoItem);
 
     // Event listener for toggling the completed state of a todo
     todoCheckbox.addEventListener('change', () => {
       todos[index].completed = !todos[index].completed;
-      renderTodos();
+      if (todos[index].completed) {
+        todoLabel.classList.add('strikethrough');
+      } else {
+        todoLabel.classList.remove('strikethrough');
+      }
+      saveTodos();
     });
 
     // Event listener for deleting a todo
     deleteButton.addEventListener('click', () => {
       todos.splice(index, 1);
       renderTodos();
+      saveTodos();
     });
 
     // Event listener for editing a todo
@@ -72,6 +82,7 @@ function renderTodos() {
       if (newText !== null) {
         todos[index].text = newText;
         renderTodos();
+        saveTodos();
       }
     });
   });
@@ -88,8 +99,13 @@ addTodoForm.addEventListener('submit', (event) => {
     });
     addTodoInput.value = '';
     renderTodos();
+    saveTodos();
   }
 });
 
-// Render the initial todos
+// Save the todos to local storage
+function saveTodos() {
+  localStorage.setItem('todos', JSON.stringify(todos));
+}
+
 renderTodos();
