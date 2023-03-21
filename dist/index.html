@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Momentum</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="output.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="output.css">
 </head>
 <script>
 tailwind.config = {
@@ -48,6 +53,7 @@ tailwind.config = {
       <option value="Asia/Tokyo">Tokyo (GMT+9)</option>
       <option value="Asia/Manila">Philippines (GMT+8)</option>
     </select>
+    
     <form id="login-form" class="hidden mt-0 mr-0 mb-2.5 ml-0 ">
         <input id="username-input" class="loginInput  text-white border-0 outline-0 
         bg-transparent border-b-2 border-white border-solid w-26 text-3xl
@@ -57,31 +63,34 @@ tailwind.config = {
          type="text"
          placeholder="What is your name?"/>
     </form>
+
     <div class="flex">
     <h1 id="greeting" class="hidden mt-0 mr-0 mb-2.5 ml-0 text-xl"></h1>
     <button id="update-btn" class="hidden"><img src="imgs/edit.svg" alt="" class="w-5 mb-1.5 ml-2 cursor-pointer justify-end"></button>
   </div>
    
-    <div class="todo-panel fixed bottom-40 right-12 bg-white w-80 h-96 overflow-hidden 
-    transition-transform duration-300 ease-in-out rounded-lg">
-        <button class="close-button text-red-500 absolute right-2.5 text-2xl border-0 bg-none cursor-pointer">&times;</button>
-        <h2 class="title text-black bg-gray-400 text-center text-2xl">Todo List</h2>
-        <ul class="todo-list list-none px-2.5 py-0 h-72 overflow-7-auto"></ul>
-        <form class="add-todo-form flex items-center py-2.5 px-2.5 ">
+    <div class="todo-panel fixed bottom-40 right-12 overflow-hidden 
+    transition-transform duration-300 ease-in-out rounded-3xl">
+        <button class="close-button text-red-500 absolute right-4 text-2xl border-0 bg-none cursor-pointer">&times;</button>
+        <h2 class="title text-black text-center text-2xl">Todo List</h2>
+        <ul class="todo-list sortable list-none px-2.5 py-0 h-72 overflow-7-auto"></ul>
+        <form class="add-todo-form flex items-center py-3.5 px-2.5  ">
           <input type="text" class="add-todo-input text-gray-500 grow mr-2.5
-           border-none px-1 py-1 rounded bg-white" placeholder="Add a new todo...">
+           border-none px-1 py-1 rounded bg-white " placeholder="Add a new todo...">
           <button type="submit" class="add-todo-button border-none py-1.5
-           px-3 rounded-md bg-blue-500 text-white cursor-pointer">Add</button>
+           px-3 rounded-md cursor-pointer bg-yellow-700"><i class="fa fa-plus"></i></button>
         </form>
       </div>
     
-      <button class="open-button">Open Todo List</button>
+      <button class="open-button top-50 right-6 absolute text-5xl"><i class="fas fa-tasks"></i></button>
   
     <div id="weather" class="italic text-xs absolute top-6 right-6 text-base ">
         <span></span>
         <span></span>
     </div>
-    <p id="made" class="absolute bottom-3 left-6 italic text-center text-xs">Made by Jose Infante</p>
+
+    <p id="made" class="absolute bottom-3 left-6 italic text-center text-xs">Jose Infante</p>
+
     <div id="quote-container"  class="absolute bottom-6 italic text-xs text-center text-xl ">
       <div id="quote-text" class="mb-4"></div>
       <div id="quote-author" class="italic"></div>

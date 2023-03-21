@@ -7,8 +7,6 @@ const updateButton = document.querySelector("#update-btn");
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
-
-// Define a function to update the clock display
 function getClock() {
   const date = new Date();
   const timezone = timezoneSelect.value;
@@ -21,36 +19,29 @@ function getClock() {
   };
   clock.innerText = date.toLocaleString("en-US", options);
 
-  // Save current timezone to local storage
   localStorage.setItem("timezone", timezone);
 
-  // Update greetings
   const savedUsername = localStorage.getItem("username");
   if (savedUsername) {
     printGreetings(savedUsername, timezone);
   }
 }
 
-// Load the saved timezone from local storage
 const savedTimezone = localStorage.getItem("timezone");
 if (savedTimezone) {
   timezoneSelect.value = savedTimezone;
 }
 
-// Display the clock
 getClock();
 setInterval(getClock, 1000);
 
-// Update the clock and greetings when the timezone is changed
 timezoneSelect.addEventListener("change", () => {
   getClock();
 });
 
-
-// Define a function to handle the submit event of the login form
 function onLoginSubmit(event) {
   console.log("onLoginSubmit called");
-  event.preventDefault(); // Prevent the default behavior of the submit button
+  event.preventDefault(); 
   loginForm.classList.add(HIDDEN_CLASSNAME);
   const username = loginInput.value;
   localStorage.setItem(USERNAME_KEY, username);
@@ -58,24 +49,21 @@ function onLoginSubmit(event) {
   updateButton.classList.remove(HIDDEN_CLASSNAME);
 }
 
-
-// Define a function to update the greeting text based on the current time and the provided username and timezone
 function printGreetings(username, timezone) {
-    const now = new Date();
-    const hours = now.toLocaleString("en-US", { timeZone: timezone, hour: "numeric", hour12: false }).split(":")[0];
-    let greetingText = "";
-    if (hours >= 5 && hours < 12) {
-      greetingText = "Good morning";
-    } else if (hours >= 12 && hours < 18) {
-      greetingText = "Good afternoon";
-    } else {
-      greetingText = "Good evening";
-    }
-    greeting.innerText = `${greetingText}, ${username}.`;
-    greeting.classList.remove(HIDDEN_CLASSNAME);
+  const now = new Date();
+  const hours = now.toLocaleString("en-US", { timeZone: timezone, hour: "numeric", hour12: false }).split(":")[0];
+  let greetingText = "";
+  if (hours >= 5 && hours < 12) {
+    greetingText = "Good morning";
+  } else if (hours >= 12 && hours < 18) {
+    greetingText = "Good afternoon";
+  } else {
+    greetingText = "Good evening";
   }
+  greeting.innerText = `${greetingText}, ${username}.`;
+  greeting.classList.remove(HIDDEN_CLASSNAME);
+}
 
-// Define a function to handle the click event of the update button
 function onUpdateName() {
   localStorage.removeItem(USERNAME_KEY);
   loginForm.classList.remove(HIDDEN_CLASSNAME);
@@ -87,7 +75,6 @@ function onUpdateName() {
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);
 
-// Check if the saved username exists in the local storage
 if (savedUsername === null) {
   loginForm.classList.remove(HIDDEN_CLASSNAME);
   loginForm.addEventListener("submit", onLoginSubmit);

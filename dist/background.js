@@ -1,7 +1,5 @@
-// array of image file names
 const images = ["0.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg"];
       
-// function to choose a random image and set it as the background
 function setRandomBackground() {
   const chosenImage = images[Math.floor(Math.random() * images.length)];
   const bgImage = document.createElement("img");
