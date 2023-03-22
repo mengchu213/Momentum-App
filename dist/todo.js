@@ -9,12 +9,16 @@ let todos = [];
 
 const savedTodos = localStorage.getItem('todos');
 if (savedTodos !== null) {
-  todos = JSON.parse(savedTodos);
+  const parsedTodos = JSON.parse(savedTodos);
+  if (Array.isArray(parsedTodos) && parsedTodos.every(todo => 'text' in todo && 'completed' in todo)) {
+    todos = parsedTodos;
+  }
 }
 
 openButton.addEventListener('click', () => {
-  todoPanel.classList.add('open');
+  todoPanel.classList.toggle('open');
 });
+
 
 closeButton.addEventListener('click', () => {
   todoPanel.classList.remove('open');
@@ -23,6 +27,7 @@ closeButton.addEventListener('click', () => {
 function renderTodoItem(todo, index) {
   const todoItem = document.createElement('li');
   todoItem.classList.add('todo-item');
+  todoItem.dataset.index = index;
 
   const todoCheckbox = document.createElement('input');
   todoCheckbox.type = 'checkbox';
@@ -117,7 +122,20 @@ new Sortable(todoList, {
   handle: '.todo-label',
   ghostClass: 'sortable-ghost',
   fallbackOnBody: true,
-  swapThreshold: 0.5
+  swapThreshold: 0.5,
+  onEnd: saveTodoOrder
 });
+
+function saveTodoOrder() {
+  const todoItems = todoList.querySelectorAll('.todo-item');
+  const newOrder = [];
+  todoItems.forEach((item) => {
+    const index = parseInt(item.dataset.index);
+    newOrder.push(todos[index]);
+  });
+  todos = newOrder;
+  renderTodos();
+  saveTodos();
+}
 
 renderTodos();

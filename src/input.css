@@ -26,6 +26,9 @@ body {
   font-family: sans-serif;
 }
 
+#clock{
+  font-family: 'Noto Serif', serif;
+}
 ::placeholder {
   font-size: 1.1rem;
   color: white;
