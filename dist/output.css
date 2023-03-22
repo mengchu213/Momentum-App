@@ -661,7 +661,7 @@ body {
 }
 
 .challenge-button {
-  background-color: #dda15e;
+  background-color: #f19c79;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -699,7 +699,7 @@ body {
 .pomodoro-container {
   width: 66%;
   height: 66%;
-  background: url(imgs/kamatis.jpg);
+  background: url(imgs/kamatis4.jpg);
   text-align: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -707,11 +707,45 @@ body {
 }
 
 .timer {
-  font-size: 200px;
+  font-size: 10rem;
   font-family: 'Noto Serif', serif;
   color: black;
 }
 
 .exit-button {
   cursor: pointer;
+}
+
+.timer-control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.timer-control button {
+  background-color: #e75d37;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.break-btn {
+  background-color: #e75d37;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
 }

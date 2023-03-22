@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Momentum App</title>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@1,700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momentum App</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@1,700&display=swap" rel="stylesheet">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="output.css">
 </head>
@@ -70,7 +67,7 @@ tailwind.config = {
     <h1 id="greeting" class="hidden mt-0 mr-0 mb-2.5 ml-0 text-xl"></h1>
     <button id="update-btn" class="hidden"><img src="imgs/edit.svg" alt="" 
       class="w-5 mb-1.5 ml-2 cursor-pointer justify-end"></button>
-  </div>
+    </div>
 
     <div class="todo-panel fixed bottom-40 right-16 overflow-hidden 
     transition-transform duration-300 ease-in-out rounded-3xl sm:bottom-40 sm:right-12">
@@ -83,10 +80,11 @@ tailwind.config = {
           <button type="submit" class="add-todo-button border-none py-1.5
            px-3 rounded-md cursor-pointer bg-yellow-700"><i class="fa fa-plus"></i></button>
         </form>
-      </div>
+    </div>
     
       <button class="open-button top-10 right-6 sm:top-2/4 sm:right-6  absolute text-5xl ">
         <i class="fas fa-tasks"></i></button>
+
     <div id="weather" class="italic text-xs absolute top-6 right-6 text-base ">
         <span></span>
         <span></span>
@@ -99,32 +97,56 @@ tailwind.config = {
       <div id="quote-author" class="italic"></div>
     </div>
 
-<div class="daily-challenge-container top-6 left-6 absolute">
+<div class="daily-challenge-container bottom-32 left-6 absolute">
   <h2>Daily Challenge</h2>
   <div class="daily-challenge">
     <p class="challenge-text"></p>
     <button class="challenge-button">Mark as Complete</button>
   </div>
+
   <div class="challenge-completed-message hidden">
     <p>Challenge Completed! Great job!</p>
   </div>
 </div>
+
 <button class="open-pomodoro-modal top-28 right-6 sm:top-96 sm:right-6  absolute text-5xl"><i class="fa fa-stopwatch"></i></button>
   <div class="pomodoro-modal">
     <div class="pomodoro-container">
       <button class="exit-button text-black text-5xl ml-10 
       flex justify-end hover:text-yellow-100">&times;</button>
       <h1 class="text-black text-7xl font-semibold font-sans">Kamatis Pomodoro Timer</h1>
+      <div class="flex justify-evenly mb-5 pt-10 font-semibold">
+
+        <div class="timer-control text-black">
+          <p class="mr-3">Session Length</p>
+          <button class="decrement-session">-</button>
+          <span id="session-length" class="px-2">25</span>
+          <button class="increment-session">+</button>
+        </div>
+
+        <div class="timer-control text-black">
+          <p class="mr-3">Break Length</p>
+          <button class="decrement-break">-</button>
+          <span id="break-length" class="px-2">5</span>
+          <button class="increment-break">+</button>
+        </div>
+      </div>
+
+      <div class="flex justify-center mb-5">
+        <button id="break-button" class="break-btn">Break Time</button>
+      </div>
+
+  <p id="status-label" class="text-3xl font-bold text-black">Session</p>
+
       <div class="timer text-black grow
-       justify-center self-center flex pt-20 font-semibold">25:00</div>
-      <div class="flex justify-evenly mb-5 pt-52 font-semibold">
+       justify-center self-center flex font-semibold">25:00</div>
+      <div class="flex justify-evenly  pt-28 font-semibold">
       <button class="start-timer text-black text-5xl hover:text-yellow-100">Start</button>
       <button class="stop-timer text-black text-5xl hover:text-yellow-100">Stop</button>
       <button class="reset-timer text-black text-5xl hover:text-yellow-100">Reset</button>
       </div>
     </div>
   </div>
-
 
     <script src="background.js"></script>
     <script src="clockNgreetings.js"></script>
