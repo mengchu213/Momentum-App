@@ -40,5 +40,5 @@ Daily challenges, such as riddles or fun facts, are provided to keep users engag
 To run the Momentum App on your local machine, simply clone this repository and open the `index.html` file in your preferred web browser.
 
 ```bash
-git clone https://github.com/yourusername/momentum-app.git
+git clone https://github.com/mengchu213/momentum-app.git
 cd momentum-app
