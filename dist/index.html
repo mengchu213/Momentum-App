@@ -1,152 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Momentum App</title>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@1,700&display=swap" rel="stylesheet">
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momentum App</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@1,700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="output.css">
-</head>
-<script>
-tailwind.config = {
-  theme: {
-    screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '945px',
-      xl: '1440px',
-    },
-    extend: {},
-    fontSize: {
-      sm: '0.8rem',
-      base: '1rem',
-      xl: '1.25rem',
-      '2xl': '1.563rem',
-      '3xl': '1.953rem',
-      '4xl': '2.441rem',
-      '5xl': '3.052rem',
-      '7xl': '4.267rem',
-      '8xl': '4.878rem',
-      '9xl': '5.489rem',
-      '10xl': '7.2rem'
-   }
-  }
-}
-</script>
-<body> 
-    <h2 id="clock" class="text-8xl sm:text-10xl leading-normal m-0 pb-0 mb-0">00:00:00</h2>
-    <select id="timezone-select" class="bg-gray-400 rounded-md mb-5" >
-      <option value="America/New_York">New York (GMT-4)</option>
-      <option value="America/Los_Angeles">Los Angeles (GMT-7)</option>
-      <option value="Europe/London">London (GMT+1)</option>
-      <option value="Asia/Tokyo">Tokyo (GMT+9)</option>
-      <option value="Asia/Manila">Philippines (GMT+8)</option>
-    </select>
+  </head>
+  <script>
+    tailwind.config = {
+      theme: {
+        screens: {
+          sm: '640px',
+          md: '768px',
+          lg: '945px',
+          xl: '1440px'
+        },
+        extend: {},
+        fontSize: {
+          sm: '0.8rem',
+          base: '1rem',
+          xl: '1.25rem',
+          '2xl': '1.563rem',
+          '3xl': '1.953rem',
+          '4xl': '2.441rem',
+          '5xl': '3.052rem',
+          '7xl': '4.267rem',
+          '8xl': '4.878rem',
+          '9xl': '5.489rem',
+          '10xl': '7.2rem'
+        }
+      }
+    }
+  </script>
+<body>
+  <h2 id="clock" class="text-8xl sm:text-10xl leading-normal m-0 pb-0 mb-0">00:00:00</h2>
+  <select id="timezone-select" class="bg-gray-400 rounded-md mb-5">
+    <option value="America/New_York">New York (GMT-4)</option>
+    <option value="America/Los_Angeles">Los Angeles (GMT-7)</option>
+    <option value="Europe/London">London (GMT+1)</option>
+    <option value="Asia/Tokyo">Tokyo (GMT+9)</option>
+    <option value="Asia/Manila">Philippines (GMT+8)</option>
+  </select>
 
-    <form id="login-form" class="hidden mt-0 mr-0 mb-2.5 ml-0 ">
-        <input id="username-input" class="loginInput  text-white border-0 outline-0 
-        bg-transparent border-b-2 border-white border-solid w-26 text-3xl
-         text-center"
-         required
-         maxlength="15"
-         type="text"
-         placeholder="What is your name?"/>
-    </form>
+  <form id="login-form" class="hidden mt-0 mr-0 mb-2.5 ml-0">
+    <input id="username-input" class="loginInput  text-white border-0 outline-0 bg-transparent border-b-2 border-white border-solid w-26 text-3xl text-center"
+      required maxlength="15" type="text" placeholder="What is your name?" />
+  </form>
 
-    <div class="flex">
+  <div class="flex">
     <h1 id="greeting" class="hidden mt-0 mr-0 mb-2.5 ml-0 text-xl"></h1>
-    <button id="update-btn" class="hidden"><img src="imgs/edit.svg" alt="" 
-      class="w-5 mb-1.5 ml-2 cursor-pointer justify-end"></button>
-    </div>
-
-    <div class="todo-panel fixed bottom-40 right-16 overflow-hidden 
-    transition-transform duration-300 ease-in-out rounded-3xl sm:bottom-40 sm:right-12">
-        <button class="close-button text-red-500 absolute right-4 text-2xl border-0 bg-none cursor-pointer">&times;</button>
-        <h2 class="title text-black text-center text-2xl">Todo List</h2>
-        <ul class="todo-list sortable list-none px-2.5 py-0 h-72 overflow-7-auto"></ul>
-        <form class="add-todo-form flex items-center py-5 px-2.5  ">
-          <input type="text" class="add-todo-input text-gray-500 grow mr-2.5
-           border-none px-1 py-1 rounded bg-white " placeholder="Add a new todo...">
-          <button type="submit" class="add-todo-button border-none py-1.5
-           px-3 rounded-md cursor-pointer bg-yellow-700"><i class="fa fa-plus"></i></button>
-        </form>
-    </div>
-    
-      <button class="open-button top-10 right-6 sm:top-2/4 sm:right-6  absolute text-5xl ">
-        <i class="fas fa-tasks"></i></button>
-
-    <div id="weather" class="italic text-xs absolute top-6 right-6 text-base ">
-        <span></span>
-        <span></span>
-    </div>
-
-    <p id="made" class="absolute bottom-3 left-6 italic text-center text-xs">Jose Infante</p>
-
-    <div id="quote-container"  class="absolute bottom-6 italic text-xs text-center text-xl ">
-      <div id="quote-text" class="mb-4"></div>
-      <div id="quote-author" class="italic"></div>
-    </div>
-
-<div class="daily-challenge-container bottom-32 left-6 absolute">
-  <h2>Daily Challenge</h2>
-  <div class="daily-challenge">
-    <p class="challenge-text"></p>
-    <button class="challenge-button">Mark as Complete</button>
+    <button id="update-btn" class="hidden">
+      <img src="imgs/edit.svg" alt="" class="w-5 mb-1.5 ml-2 cursor-pointer justify-end">
+    </button>
   </div>
 
-  <div class="challenge-completed-message hidden">
-    <p>Challenge Completed! Great job!</p>
+  <div class="todo-panel fixed bottom-40 right-16 overflow-hidden transition-transform duration-300 ease-in-out rounded-3xl sm:bottom-40 sm:right-12">
+    <button class="close-button text-red-500 absolute right-4 text-2xl border-0 bg-none cursor-pointer">&times;</button>
+    <h2 class="title text-black text-center text-2xl">Todo List</h2>
+    <ul class="todo-list sortable list-none px-2.5 py-0 h-72 overflow-7-auto"></ul>
+    <form class="add-todo-form flex items-center py-5 px-2.5">
+      <input type="text" class="add-todo-input text-gray-500 grow mr-2.5 border-none px-1 py-1 rounded bg-white" placeholder="Add a new todo...">
+      <button type="submit" class="add-todo-button border-none py-1.5 px-3 rounded-md cursor-pointer bg-yellow-700"><i class="fa fa-plus"></i></button>
+    </form>
+  </div>
+
+  <button class="open-button top-10 right-6 sm:top-2/4 sm:right-6 absolute text-5xl">
+    <i class="fas fa-tasks"></i>
+  </button>
+
+  <div id="weather" class="italic text-xs absolute top-6 right-6 text-base">
+    <span></span>
+    <span></span>
+  </div>
+
+  <p id="made" class="absolute bottom-3 left-6 italic text-center text-xs">Jose Infante</p>
+
+  <div id="quote-container" class="absolute bottom-6 italic text-xs text-center text-xl">
+    <div id="quote-text" class="mb-4"></div>
+    <div id="quote-author" class="italic"></div>
+  </div>
+
+  <div class="daily-challenge-container bottom-32 left-6 absolute">
+    <h2>Daily Challenge</h2>
+    <div class="daily-challenge">
+      <p class="challenge-text"></p>
+      <button class="challenge-button">Mark as Complete</button>
+    </div>
+
+    <div class="challenge-completed-message hidden">
+      <p>Challenge Completed! Great job!</p>
+    </div>
+  </div>
+
+  <button class="open-pomodoro-modal hidden sm:inline-block sm:top-1/3 sm:right-6 absolute text-5xl">
+    <i class="fa fa-stopwatch"></i>
+  </button>
+
+  <div class="pomodoro-modal hidden fixed inset-0 items-center justify-center bg-black bg-opacity-50 z-10">
+    <div class="pomodoro-container w-3/5 h-3/5 rounded-2xl bg-center bg-no-repeat bg-cover" style="background-image: url('imgs/kamatis4.jpg');">
+      <div class="pomodoro-content w-full h-full flex flex-col items-center justify-center">
+        <h1 class="text-black text-3xl sm:text-4xl xl:text-5xl font-semibold font-sans ml-20 flex items-center">
+          Kamatis Pomodoro Timer
+          <button class="exit-button text-black text-3xl ml-28 justify-end hover:text-yellow-300 cursor-pointer">&times;</button>
+        </h1>
+        <div class="flex flex-col sm:flex-row justify-evenly mb-2 pt-5  font-semibold">
+          <div class="timer-control text-black mb-4 sm:mb-0 flex items-center">
+            <p class="mr-3">Session Length</p>
+            <button class="decrement-session bg-e75d37 text-white py-1 px-2 rounded mr-1">-</button>
+            <span id="session-length" class="px-2">25</span>
+            <button class="increment-session bg-e75d37 text-white py-1 px-2 rounded mr-10">+</button>
+          </div>
+          <div class="timer-control text-black flex items-center">
+            <p class="mr-3">Break Length</p>
+            <button class="decrement-break bg-e75d37 text-white py-1 px-2 rounded mr-1">-</button>
+            <span id="break-length" class="px-2">5</span>
+            <button class="increment-break bg-e75d37 text-white py-1 px-2 rounded ml-1">+</button>
+          </div>
+        </div>
+        <div class="flex justify-center mb-5">
+          <button id="break-button" class="break-btn bg-e75d37 text-white py-2 px-4 rounded">Break Time</button>
+        </div>
+        <p id="status-label" class="text-2xl sm:text-3xl font-bold text-black">Session</p>
+        <div class="timer text-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold font-serif">25:00</div>
+
+        <div class="flex flex-col sm:flex-row justify-evenly mt-4 font-semibold ">
+          <button class="start-timer text-black hover:bg-yellow-300 text-xs sm:text-md md:text-lg lg:text-xl xl:text-2xl py-1 sm:py-2 md:py-2 lg:py-2 xl:py-2 px-2 sm:px-4 md:px-4 lg:px-4 xl:px-4 rounded mr-2">Start</button>
+          <button class="stop-timer text-black hover:bg-yellow-300 text-xs sm:text-md md:text-lg lg:text-xl xl:text-2xl py-1 sm:py-2 md:py-2 lg:py-2 xl:py-2 px-2 sm:px-4 md:px-4 lg:px-4 xl:px-4 rounded mr-2">Stop</button>
+          <button class="reset-timer text-black hover:bg-yellow-300 text-xs sm:text-md md:text-lg lg:text-xl xl:text-2xl py-1 sm:py-2 md:py-2 lg:py-2 xl:py-2 px-2 sm:px-4 md:px-4 lg:px-4 xl:px-4 rounded">Reset</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<button class="open-pomodoro-modal hidden sm:inline-block sm:top-1/3 sm:right-6  absolute text-5xl"><i class="fa fa-stopwatch"></i></button>
-  <div class="pomodoro-modal">
-    <div class="pomodoro-container">
-      <button class="exit-button text-black text-5xl ml-10 
-      flex justify-end hover:text-yellow-100">&times;</button>
-      <h1 class="text-black text-7xl font-semibold font-sans">Kamatis Pomodoro Timer</h1>
-      <div class="flex justify-evenly mb-5 pt-10 font-semibold">
-
-        <div class="timer-control text-black">
-          <p class="mr-3">Session Length</p>
-          <button class="decrement-session">-</button>
-          <span id="session-length" class="px-2">25</span>
-          <button class="increment-session">+</button>
-        </div>
-
-        <div class="timer-control text-black">
-          <p class="mr-3">Break Length</p>
-          <button class="decrement-break">-</button>
-          <span id="break-length" class="px-2">5</span>
-          <button class="increment-break">+</button>
-        </div>
-      </div>
-
-      <div class="flex justify-center mb-5">
-        <button id="break-button" class="break-btn">Break Time</button>
-      </div>
-
-  <p id="status-label" class="text-3xl font-bold text-black">Session</p>
-
-      <div class="timer text-black grow
-       justify-center self-center flex font-semibold">25:00</div>
-      <div class="flex justify-evenly  pt-28 font-semibold">
-      <button class="start-timer text-black text-5xl hover:text-yellow-100">Start</button>
-      <button class="stop-timer text-black text-5xl hover:text-yellow-100">Stop</button>
-      <button class="reset-timer text-black text-5xl hover:text-yellow-100">Reset</button>
-      </div>
-    </div>
-  </div>
 
     <script src="background.js"></script>
     <script src="clockNgreetings.js"></script>
